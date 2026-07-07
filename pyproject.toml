@@ -1,9 +1,20 @@
 [project]
 name = "medical-retrieval-plus"
 version = "0.1.0"
-description = "工程化医学混合检索系统：NER + BM25 + 向量检索 + 融合排序"
+description = "A teaching-oriented Chinese medical hybrid retrieval project with NER, BM25, embeddings, and vector stores."
 requires-python = ">=3.10"
 dependencies = []
+
+[project.optional-dependencies]
+vector = [
+  "numpy>=1.24",
+  "faiss-cpu>=1.8.0",
+  "sentence-transformers>=3.0.0"
+]
+api = [
+  "fastapi>=0.111.0",
+  "uvicorn>=0.30.0"
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

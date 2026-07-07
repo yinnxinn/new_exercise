@@ -8,3 +8,5 @@ venv/
 *.log
 *.faiss
 *.index
+data/indexes/
+

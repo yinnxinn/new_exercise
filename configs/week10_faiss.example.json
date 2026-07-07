@@ -1,0 +1,12 @@
+﻿{
+  "data_path": "data/medical_docs.jsonl",
+  "embedding": {
+    "backend": "sentence-transformer",
+    "model_name": "shibing624/text2vec-base-chinese",
+    "normalize": true
+  },
+  "vector_store": {
+    "backend": "faiss",
+    "index_path": "data/indexes/week10.faiss"
+  }
+}

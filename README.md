@@ -58,7 +58,7 @@ medical_retrieval_plus/
 进入项目目录：
 
 ```powershell
-cd D:\projects\class2026\class9\medical_retrieval_plus
+cd D:\projects\class2026\medical_retrieval_plus
 $env:PYTHONPATH = "src"
 ```
 
@@ -153,5 +153,27 @@ python -m medical_retrieval.data.convert_medical_graph --input path\to\disease.c
 ```powershell
 python -m medical_retrieval.app.cli --config configs\medical_graph.json --query "咳嗽发热需要做什么检查"
 ```
+## 9. 第 10 周：Embedding 与向量数据库
 
+第 10 周在原有 BM25 + 规则 NER 的基础上增加语义向量检索层：
+
+- `embeddings/`：统一 embedding 接口，包含无依赖 `HashEmbeddingModel` 和可选 `SentenceTransformerEmbeddingModel`。
+- `retrieval/vector_store.py`：统一向量库接口，包含 `InMemoryVectorStore` 和可选 `FaissVectorStore`。
+- `configs/week10_vector.json`：默认无依赖演示配置。
+- `configs/week10_faiss.example.json`：FAISS + sentence-transformers 示例配置。
+- `docs/weeks/week10_embedding_vector_db.md`：课程说明。
+
+无依赖版本运行：
+
+```powershell
+python -m medical_retrieval.app.build_vector_index --config configs\week10_vector.json
+python -m medical_retrieval.app.search_vector --config configs\week10_vector.json --query "咳嗽发热需要做什么检查"
+```
+
+安装可选向量依赖后，可以切换到 FAISS 和真实 sentence embedding：
+
+```powershell
+pip install -e .[vector]
+python -m medical_retrieval.app.build_vector_index --config configs\week10_faiss.example.json
+```
 

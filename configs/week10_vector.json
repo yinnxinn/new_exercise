@@ -1,0 +1,11 @@
+﻿{
+  "data_path": "data/medical_docs.jsonl",
+  "embedding": {
+    "backend": "hash",
+    "dim": 256
+  },
+  "vector_store": {
+    "backend": "memory",
+    "index_path": "data/indexes/week10_memory_vectors.json"
+  }
+}
