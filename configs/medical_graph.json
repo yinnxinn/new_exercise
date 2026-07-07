@@ -1,0 +1,21 @@
+﻿{
+  "data_path": "data/medical_graph_docs.jsonl",
+  "lexicon_path": "data/medical_graph_lexicon.json",
+  "alpha": 0.52,
+  "top_k": 5,
+  "bm25": {
+    "k1": 1.5,
+    "b": 0.75
+  },
+  "vector": {
+    "backend": "hash",
+    "dim": 256
+  },
+  "ranking": {
+    "title_hit_bonus": 0.12,
+    "tag_hit_bonus": 0.08,
+    "department_hit_bonus": 0.12,
+    "max_field_bonus": 0.32,
+    "max_entity_bonus": 0.45
+  }
+}

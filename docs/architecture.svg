@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980">
+  <defs>
+    <style>
+      .bg { fill: #f7f8fb; }
+      .lane { fill: #ffffff; stroke: #d8dee9; stroke-width: 2; }
+      .box { fill: #ffffff; stroke: #2f5bea; stroke-width: 2.5; rx: 14; ry: 14; }
+      .box2 { fill: #f4f7ff; stroke: #2f5bea; stroke-width: 2.5; rx: 14; ry: 14; }
+      .title { font: 700 28px "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .subtitle { font: 600 18px "Microsoft YaHei", Arial, sans-serif; fill: #344054; }
+      .text { font: 16px "Microsoft YaHei", Arial, sans-serif; fill: #172033; }
+      .small { font: 14px "Microsoft YaHei", Arial, sans-serif; fill: #475467; }
+      .label { font: 700 16px "Microsoft YaHei", Arial, sans-serif; fill: #2f5bea; }
+      .arrow { stroke: #2f5bea; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .arrow2 { stroke: #667085; stroke-width: 2.5; fill: none; marker-end: url(#arrowheadGray); }
+      .dashed { stroke-dasharray: 8 6; }
+      .note { fill: #eef4ff; stroke: #b5c9ff; stroke-width: 2; rx: 14; ry: 14; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#2f5bea"/>
+    </marker>
+    <marker id="arrowheadGray" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#667085"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="980"/>
+  <text class="title" x="800" y="48" text-anchor="middle">Medical Retrieval Plus 系统架构图</text>
+  <text class="small" x="800" y="76" text-anchor="middle">输入层 - 检索层 - 排序层 - 输出层</text>
+
+  <rect class="lane" x="60" y="120" width="1480" height="160" rx="18" ry="18"/>
+  <text class="subtitle" x="90" y="150">输入层</text>
+
+  <rect class="lane" x="60" y="320" width="1480" height="260" rx="18" ry="18"/>
+  <text class="subtitle" x="90" y="350">检索层</text>
+
+  <rect class="lane" x="60" y="620" width="1480" height="220" rx="18" ry="18"/>
+  <text class="subtitle" x="90" y="650">排序与输出层</text>
+
+  <rect class="box" x="120" y="170" width="220" height="70"/>
+  <text class="text" x="230" y="203" text-anchor="middle">用户查询</text>
+  <text class="small" x="230" y="224" text-anchor="middle">中文问题 / 检索请求</text>
+
+  <rect class="box" x="420" y="170" width="240" height="70"/>
+  <text class="text" x="540" y="200" text-anchor="middle">CLI / 未来 Web API</text>
+  <text class="small" x="540" y="224" text-anchor="middle">统一入口</text>
+
+  <rect class="box2" x="740" y="170" width="220" height="70"/>
+  <text class="text" x="850" y="200" text-anchor="middle">查询预处理</text>
+  <text class="small" x="850" y="224" text-anchor="middle">分词 / n-gram / NER</text>
+
+  <rect class="box" x="1040" y="140" width="210" height="70"/>
+  <text class="text" x="1145" y="171" text-anchor="middle">BM25</text>
+  <text class="small" x="1145" y="194" text-anchor="middle">关键词召回</text>
+
+  <rect class="box" x="1040" y="235" width="210" height="70"/>
+  <text class="text" x="1145" y="266" text-anchor="middle">向量检索</text>
+  <text class="small" x="1145" y="289" text-anchor="middle">哈希向量 / CBOW</text>
+
+  <rect class="box" x="1040" y="430" width="210" height="70"/>
+  <text class="text" x="1145" y="460" text-anchor="middle">文档实体缓存</text>
+  <text class="small" x="1145" y="484" text-anchor="middle">规则 NER 结果</text>
+
+  <rect class="box2" x="120" y="390" width="240" height="80"/>
+  <text class="text" x="240" y="422" text-anchor="middle">数据加载层</text>
+  <text class="small" x="240" y="446" text-anchor="middle">JSONL 文档 / 配置</text>
+
+  <rect class="box2" x="420" y="390" width="240" height="80"/>
+  <text class="text" x="540" y="422" text-anchor="middle">文档预处理</text>
+  <text class="small" x="540" y="446" text-anchor="middle">文本切分 / 实体抽取</text>
+
+  <rect class="box" x="740" y="390" width="220" height="80"/>
+  <text class="text" x="850" y="422" text-anchor="middle">规则 NER</text>
+  <text class="small" x="850" y="446" text-anchor="middle">症状 / 疾病 / 科室</text>
+
+  <rect class="box2" x="420" y="690" width="260" height="90"/>
+  <text class="text" x="550" y="724" text-anchor="middle">融合排序</text>
+  <text class="small" x="550" y="748" text-anchor="middle">vector + bm25 + field + entity</text>
+  <text class="small" x="550" y="770" text-anchor="middle">final_score = alpha * vector + ...</text>
+
+  <rect class="box" x="760" y="690" width="220" height="90"/>
+  <text class="text" x="870" y="724" text-anchor="middle">Top-K 结果</text>
+  <text class="small" x="870" y="748" text-anchor="middle">检索结果列表</text>
+
+  <rect class="box" x="1040" y="690" width="220" height="90"/>
+  <text class="text" x="1150" y="724" text-anchor="middle">结果展示</text>
+  <text class="small" x="1150" y="748" text-anchor="middle">分数 / 命中实体 / 标签</text>
+
+  <rect class="note" x="1280" y="690" width="220" height="90"/>
+  <text class="text" x="1390" y="724" text-anchor="middle">评估脚本</text>
+  <text class="small" x="1390" y="748" text-anchor="middle">Hit@K / MRR@K</text>
+
+  <path class="arrow" d="M340 205 L420 205"/>
+  <path class="arrow" d="M660 205 L740 205"/>
+  <path class="arrow" d="M960 205 L1040 175"/>
+  <path class="arrow" d="M960 205 L1040 270"/>
+  <path class="arrow" d="M960 425 L1040 460"/>
+  <path class="arrow2 dashed" d="M360 430 L420 430"/>
+  <path class="arrow2 dashed" d="M660 430 L740 430"/>
+  <path class="arrow" d="M240 470 L240 630 L420 735"/>
+  <path class="arrow" d="M540 470 L540 630 L550 690"/>
+  <path class="arrow" d="M850 470 L850 630 L870 690"/>
+  <path class="arrow" d="M1150 495 L1150 630 L1150 690"/>
+  <path class="arrow2" d="M900 735 L1040 735"/>
+  <path class="arrow2" d="M1260 735 L1280 735"/>
+
+  <rect class="note" x="120" y="835" width="1360" height="80"/>
+  <text class="label" x="150" y="866">目录映射：</text>
+  <text class="small" x="250" y="866">io.py / text.py / ner.py / bm25.py / vector.py / ranker.py / pipeline.py / cli.py / evaluate.py</text>
+  <text class="small" x="250" y="892">该图展示了从查询进入系统，到文档召回、融合排序、结果展示和离线评估的完整链路。</text>
+</svg>

@@ -1,0 +1,10 @@
+[project]
+name = "medical-retrieval-plus"
+version = "0.1.0"
+description = "工程化医学混合检索系统：NER + BM25 + 向量检索 + 融合排序"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
