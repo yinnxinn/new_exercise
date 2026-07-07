@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medical Retrieval Plus</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="search-panel">
+      <div class="brand">Medical Retrieval Plus</div>
+      <div class="query-row">
+        <input id="query" value="咳嗽发热需要做什么检查" />
+        <button id="searchBtn">检索</button>
+        <button id="streamBtn">流式回答</button>
+      </div>
+      <div id="meta" class="meta"></div>
+    </section>
+
+    <section class="content-grid">
+      <section>
+        <h2>检索结果</h2>
+        <div id="results" class="results"></div>
+      </section>
+      <section>
+        <h2>回答</h2>
+        <pre id="answer" class="answer"></pre>
+      </section>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

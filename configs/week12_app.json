@@ -1,0 +1,8 @@
+﻿{
+  "data_path": "data/medical_docs.jsonl",
+  "recall_k": 20,
+  "embedding": {
+    "backend": "hash",
+    "dim": 256
+  }
+}

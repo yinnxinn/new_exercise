@@ -191,4 +191,23 @@ python -m medical_retrieval.app.build_vector_index --config configs\week10_faiss
 ```powershell
 python -m medical_retrieval.app.hybrid_search --config configs\week11_hybrid.json --query "尿频尿痛还腰痛应该挂什么科"
 ```
+## 11. 第 12 周：Web 交互、RAG 与流式输出
+
+第 12 周把检索 pipeline 包装成可交互系统：
+
+- `generation/`：基于检索结果生成带来源和安全提示的回答。
+- `api/server.py`：FastAPI 服务，提供 `/search`、`/answer`、`/stream`。
+- `web/`：简单前端页面，支持检索和流式回答。
+- `configs/week12_app.json`：Web/RAG 演示配置。
+- `docs/weeks/week12_rag_web_streaming.md`：课程说明。
+
+运行：
+
+```powershell
+pip install -e .[api]
+$env:PYTHONPATH="src"
+uvicorn medical_retrieval.api.server:app --reload --port 8000
+```
+
+打开 `http://127.0.0.1:8000`。
 
