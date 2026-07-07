@@ -176,4 +176,19 @@ python -m medical_retrieval.app.search_vector --config configs\week10_vector.jso
 pip install -e .[vector]
 python -m medical_retrieval.app.build_vector_index --config configs\week10_faiss.example.json
 ```
+## 10. 第 11 周：多路召回与多模态概念
+
+第 11 周把单一路径检索升级为多路召回：
+
+- `query/understanding.py`：查询意图识别、实体抽取和简单查询扩展。
+- `retrieval/recall.py`：BM25、向量、实体三路召回与 RRF 融合。
+- `multimodal/assets.py`：为图片、PDF、表格等多模态资源预留统一接口。
+- `configs/week11_hybrid.json`：多路召回演示配置。
+- `docs/weeks/week11_hybrid_recall.md`：课程说明。
+
+运行：
+
+```powershell
+python -m medical_retrieval.app.hybrid_search --config configs\week11_hybrid.json --query "尿频尿痛还腰痛应该挂什么科"
+```
 
