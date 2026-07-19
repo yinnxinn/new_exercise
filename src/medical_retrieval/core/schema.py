@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 
@@ -10,6 +10,11 @@ class MedicalDocument:
     department: str
     tags: list[str]
     content: str
+    question: str = ""
+    answer: str = ""
+    source: str = ""
+    tag_codes: list[str] = field(default_factory=list)
+    metadata: dict = field(default_factory=dict)
 
     @property
     def full_text(self) -> str:

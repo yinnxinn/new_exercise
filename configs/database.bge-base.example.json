@@ -1,0 +1,16 @@
+{
+  "mysql": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "medical_retrieval",
+    "user": "medical",
+    "password": "medical_dev_password"
+  },
+  "milvus": {
+    "host": "127.0.0.1",
+    "port": 19530,
+    "collection": "medical_document_embeddings_bge_base_zh",
+    "embedding_model": "BAAI/bge-base-zh-v1.5",
+    "embedding_dim": 768
+  }
+}

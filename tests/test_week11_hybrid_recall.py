@@ -1,4 +1,5 @@
-﻿from medical_retrieval.core.schema import MedicalDocument
+﻿
+from medical_retrieval.core.schema import MedicalDocument
 from medical_retrieval.embeddings import build_embedding_model
 from medical_retrieval.query.understanding import analyze_query
 from medical_retrieval.retrieval.recall import HybridRecallPipeline

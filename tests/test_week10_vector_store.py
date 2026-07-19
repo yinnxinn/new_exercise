@@ -1,4 +1,5 @@
-﻿from medical_retrieval.core.schema import MedicalDocument
+﻿
+from medical_retrieval.core.schema import MedicalDocument
 from medical_retrieval.embeddings import build_embedding_model
 from medical_retrieval.retrieval.vector_store import InMemoryVectorStore
 

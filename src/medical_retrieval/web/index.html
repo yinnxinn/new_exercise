@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medical Retrieval Plus</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="brand">Medical Retrieval Plus</div>
+        <div class="subtitle">中文医疗问答检索、MySQL 数据层、Milvus 向量过滤与 RAG 控制台</div>
+      </div>
+      <button id="refreshStatusBtn" class="icon-button" title="刷新状态">↻</button>
+    </header>
+
+    <section class="status-grid" id="statusGrid">
+      <div class="metric"><span>MySQL</span><strong id="mysqlStatus">检查中</strong></div>
+      <div class="metric"><span>Milvus</span><strong id="milvusStatus">检查中</strong></div>
+      <div class="metric"><span>文档</span><strong id="docCount">-</strong></div>
+      <div class="metric"><span>Tags</span><strong id="tagCount">-</strong></div>
+    </section>
+
+    <nav class="tabs" aria-label="功能区">
+      <button class="tab active" data-tab="ragPanel">RAG 检索</button>
+      <button class="tab" data-tab="vectorPanel">Milvus 过滤</button>
+      <button class="tab" data-tab="tagsPanel">Tag 管理</button>
+      <button class="tab" data-tab="dataPanel">数据链路</button>
+    </nav>
+
+    <section id="ragPanel" class="panel active">
+      <div class="toolbar">
+        <input id="query" value="咳嗽发热需要做什么检查" aria-label="RAG 查询" />
+        <button id="searchBtn">检索回答</button>
+        <button id="streamBtn" class="secondary">流式输出</button>
+      </div>
+      <div id="meta" class="meta-line"></div>
+      <div class="workspace-grid">
+        <section class="block">
+          <h2>检索来源</h2>
+          <div id="results" class="result-list"></div>
+        </section>
+        <section class="block">
+          <h2>生成回答</h2>
+          <pre id="answer" class="answer"></pre>
+        </section>
+      </div>
+    </section>
+
+    <section id="vectorPanel" class="panel">
+      <div class="toolbar vector-toolbar">
+        <input id="vectorQuery" value="早泄是什么原因引起的" aria-label="Milvus 查询" />
+        <select id="departmentFilter" aria-label="科室过滤">
+          <option value="">全部科室</option>
+        </select>
+        <select id="tagFilter" aria-label="Tag 过滤">
+          <option value="">全部 Tag</option>
+        </select>
+        <button id="vectorSearchBtn">向量检索</button>
+      </div>
+      <div id="vectorFilter" class="meta-line"></div>
+      <div id="vectorResults" class="qa-list"></div>
+    </section>
+
+    <section id="tagsPanel" class="panel">
+      <div class="toolbar compact-toolbar">
+        <select id="tagTypeFilter" aria-label="Tag 类型">
+          <option value="">全部类型</option>
+          <option value="department">department</option>
+          <option value="category">category</option>
+          <option value="keyword">keyword</option>
+          <option value="entity">entity</option>
+        </select>
+        <button id="loadTagsBtn">加载 Tags</button>
+      </div>
+      <div id="tagTable" class="tag-table"></div>
+    </section>
+
+    <section id="dataPanel" class="panel">
+      <div class="data-layout">
+        <section class="block">
+          <h2>转换产物</h2>
+          <div id="fileStats" class="kv-list"></div>
+        </section>
+        <section class="block">
+          <h2>索引配置</h2>
+          <div id="indexStats" class="kv-list"></div>
+        </section>
+        <section class="block wide">
+          <h2>执行步骤</h2>
+          <ol class="steps">
+            <li>CSV 数据转换为标准文档、MySQL 导入文件、Milvus payload。</li>
+            <li>MySQL 保存问答主数据、标准文档、tag 字典、文档-tag 关系。</li>
+            <li>Milvus 保存 document_id、tag_codes、department_tag 和向量。</li>
+            <li>查询时先做向量召回和 tag 过滤，再回 MySQL 展示完整问答。</li>
+          </ol>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

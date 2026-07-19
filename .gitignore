@@ -10,3 +10,10 @@ venv/
 *.index
 data/indexes/
 
+data/raw/
+data/dialogue/
+
+*.egg-info/
+
+.idea/
+.test-tmp-*/

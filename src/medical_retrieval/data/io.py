@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 from pathlib import Path
@@ -29,6 +29,11 @@ def load_documents(path: str | Path) -> list[MedicalDocument]:
                     department=str(item["department"]),
                     tags=[str(tag) for tag in item["tags"]],
                     content=str(item["content"]),
+                    question=str(item.get("question", "")),
+                    answer=str(item.get("answer", "")),
+                    source=str(item.get("source", "")),
+                    tag_codes=[str(tag) for tag in item.get("tag_codes", [])],
+                    metadata=dict(item.get("metadata", {})),
                 )
             )
     return docs
@@ -46,6 +51,3 @@ def load_lexicon(path: str | Path) -> dict[str, list[str]]:
         cleaned = sorted({str(term).strip() for term in terms if str(term).strip()}, key=len, reverse=True)
         lexicon[str(label)] = cleaned
     return lexicon
-
-
-
